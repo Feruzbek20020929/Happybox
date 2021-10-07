@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get(
     'secret_key', '_=4dm6vs^&ho6p29lhhkc3vh=(zl5-one3==g70o=z9b%&ddrt')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('debug', False)
+DEBUG = os.environ.get('debug', True)
 
 ALLOWED_HOSTS = ['happyboxtest.herokuapp.com/','127.0.0.1']
 
@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['happyboxtest.herokuapp.com/','127.0.0.1']
 
 INSTALLED_APPS = [
     'accounts',
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +66,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,6 +74,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'ecommerce.urls'
 
@@ -146,7 +151,9 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
