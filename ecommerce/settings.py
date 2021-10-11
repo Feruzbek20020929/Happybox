@@ -31,7 +31,14 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('debug', True)
 
-ALLOWED_HOSTS=['happybox-crm1.herokuapp.com']
+ALLOWED_HOSTS = [
+   '*',
+   'http://happyboxtest.herokuapp.com/',
+   'https://happyboxtest.herokuapp.com/',
+   'happyboxtest.herokuapp.com',
+   'happyboxtest.herokuapp.com/',
+   '127.0.0.1',
+]
 
 
 # Application definition
@@ -52,6 +59,7 @@ INSTALLED_APPS = [
     'orders',
     'backoffice',
     'gunicorn',
+    'psycopg2',
 ]
 
 LOGIN_URL = 'login'
