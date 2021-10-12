@@ -41,7 +41,7 @@ packaging==21.0
 Pillow==7.2.0
 pipwin==0.5.1
 postgres==4.0
-psycopg2==2.9.1
+psycopg2==2.8.6
 psycopg2-binary==2.8.6
 psycopg2-pool==1.1
 pycodestyle==2.5.0
