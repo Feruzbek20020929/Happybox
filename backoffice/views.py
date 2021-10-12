@@ -15,13 +15,13 @@ class Productcreate(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'create/Productadd.html'
-    success_url = '/backoffice'
+    success_url = '/'
 
 class ProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'update/productupdate.html'
-    success_url = '/backoffice'
+    success_url = '/'
 
 class ProductDeleteView(DeleteView):
     model = Product
@@ -31,7 +31,7 @@ class ProductDeleteView(DeleteView):
 
 class ProductList(ListView):
     model = Product
-    success_url='backoffice/'
+    success_url='/'
     template_name = 'home.html'
 
 
